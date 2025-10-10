@@ -10,10 +10,12 @@ const PORT = 3000;
 // CORS を有効化
 app.use(cors()); 
 
+//ブランチtestコメント
+
 console.log("Hello World");
 
 app.get("/api",(req,res)=>{
-    res.json("Women's Hackathon in Kyoto");
+    res.json("Women's Hackathon in Kyoto2025");
 });
 
 //サーバーを起動する
