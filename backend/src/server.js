@@ -13,7 +13,7 @@ app.use(cors());
 console.log("Hello World");
 
 app.get("/api",(req,res)=>{
-    res.json("ハッカソン 2025");
+    res.json("2025");
 });
 
 //サーバーを起動する
