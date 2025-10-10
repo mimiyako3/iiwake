@@ -13,7 +13,7 @@ app.use(cors());
 console.log("Hello World");
 
 app.get("/api",(req,res)=>{
-    res.json("Women's Hackathon in Kyoto");
+    res.json("Women's Hackathon 2025");
 });
 
 //サーバーを起動する
