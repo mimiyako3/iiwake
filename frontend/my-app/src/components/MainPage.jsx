@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ModeButton from './ModeButton';
 
 function MainPage() {
-  const [excuse, setExcuse] = useState('');
+  const [excuse, setExcuse] = useState({ elegantText: '', meaning: '' });
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -43,10 +43,13 @@ const generateExcuse = useCallback(async (input) => {
     }
 
     const data = await response.json();
-    setExcuse(data.excuse);
+    console.log("バックエンドからのデータ:", data.excuse);
+
+    setExcuse({ elegantText: data.excuse.elegantText, meaning: data.excuse.meaning });
+    
 
     // 入力内容と生成された言い訳をオブジェクト形式で履歴に保存
-    const newHistoryItem = { input, output: data.excuse };
+    const newHistoryItem = { input, output: data.excuse.elegantText, meaning: data.excuse.meaning };
     const newHistory = [newHistoryItem, ...history];
     setHistory(newHistory);
     localStorage.setItem('excuseHistory', JSON.stringify(newHistory));

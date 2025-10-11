@@ -3,10 +3,12 @@ import React from 'react';
 import styles from '../styles/MainPage.module.css';
 
 function ExcuseDisplay({ excuse }) {
+    console.log("Excuse オブジェクト:", excuse);
   return (
     <div className={styles.excuseContainer}>
-      <h2>生成された言い訳</h2>
-      <p>{excuse}</p>
+      <h2>雅文</h2>
+      <p>{excuse.elegantText}</p>
+      <p>{excuse.meaning}</p>
     </div>
   );
 }
