@@ -10,6 +10,8 @@ const PORT = 3000;
 // CORS を有効化
 app.use(cors()); 
 
+
+
 console.log("Hello World");
 
 app.get("/api",(req,res)=>{
