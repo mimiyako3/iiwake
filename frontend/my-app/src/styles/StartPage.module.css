@@ -1,0 +1,96 @@
+/* StartPage.module.css */
+
+/* ページ全体の背景 */
+.startPageContainer {
+  background: 
+    /* url('https://media.discordapp.net/attachments/1425304722381869157/1426523492953620480/a036b10619255c93.png?ex=68eb8908&is=68ea3788&hm=266dcde4af0c6f9c654d2cdc53d960e1149535fb935584f76de391a845044e96&=&format=webp&quality=lossless&width=810&height=679') no-repeat, */
+    radial-gradient(circle at top right, rgba(163, 228, 228, 0.3), transparent 70%), /* 金雲っぽい */
+    
+    url('https://media.discordapp.net/attachments/1425304722381869157/1426523493436231841/adcd1da467a2bdce.png?ex=68eb8908&is=68ea3788&hm=3394b6bf1b34e88a3fbf12646f2033eabb5f312163bab96239ea6e8840e299be&=&format=webp&quality=lossless&width=1098&height=920')no-repeat,
+    url('https://media.discordapp.net/attachments/1425304722381869157/1426523490667860038/d09b3d0806b59901.png?ex=68eb8907&is=68ea3787&hm=8cc353da138f86c90d88f10f653c9c679a5238897c8db1727dcafdd474687884&=&format=webp&quality=lossless&width=1098&height=920')no-repeat left bottom -10%,
+    url('https://media.discordapp.net/attachments/1425304722381869157/1426523491313909770/04a12db76c024793.png?ex=68eb8907&is=68ea3787&hm=d4e4440f131d003f94990adc3fbeeaf00e0e7ecd7e09f4689c3ed654f7030a07&=&format=webp&quality=lossless&width=810&height=679')no-repeat right bottom;
+    
+  background-size: cover, cover, 30%,  30% ;
+  background-blend-mode: overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* タイトル */
+.title {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7em;
+  margin: 0;
+  color: #333; /* 水墨画に映える濃い墨色 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10vh;
+}
+
+/* 始めるボタン */
+.startButton {
+  padding: 0.8em 2em;
+  font-size: 2.5em;
+  border-radius: 20px;
+  border: 5px solid #1b1606; /* 金っぽい色 */
+  background-color: #fff8dc; /* 雅な薄色 */
+  color: #4b3621; /* 落ち着いた墨色寄り */
+  cursor: pointer;
+  margin-bottom: 5vh;
+  font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.startButton:hover {
+  background-color: #fff0b3; /* ホバーで少し明るく */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* ヘルプ吹き出し */
+.tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 10px);
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  white-space: nowrap;
+  overflow-x: auto;
+  text-align: left;
+  max-width: calc(100vw - 120px);
+  font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+  color: #333;
+}
+
+/* ヘルプボタン */
+.helpButton {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: relative;
+  z-index: 11;
+  transition: 0.2s;
+}
+
+.helpButton:hover {
+  background-color: #fff8dc;
+  border-color: #b8860b;
+}
