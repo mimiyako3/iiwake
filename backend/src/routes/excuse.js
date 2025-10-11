@@ -5,16 +5,10 @@ const { generateExcuse } = require('../utils/gemini');
 const { getCachedExcuse, setCachedExcuse } = require('../utils/cache');
 
 router.post('/', async (req, res) => {
-  const { input } = req.body;
-//   const cacheKey = `excuse:${input}`;
+  const { input, mode } = req.body;
 
-//   const cachedExcuse = await getCachedExcuse(cacheKey);
-//   if (cachedExcuse) {
-//     return res.json({ excuse: cachedExcuse });
-//   }
-
-  const excuse = await generateExcuse(input);
-//   await setCachedExcuse(cacheKey, excuse, 3600); // 1時間キャッシュ
+  const excuse = await generateExcuse(input, mode);
+  console.log(input, mode);
 
   res.json({ excuse });
 });

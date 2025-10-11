@@ -3,12 +3,19 @@ import InputForm from './InputForm';
 import ExcuseDisplay from './ExcuseDisplay';
 import styles from '../styles/MainPage.module.css';
 import { Link } from 'react-router-dom';
+import ModeButton from './ModeButton';
 
 function MainPage() {
   const [excuse, setExcuse] = useState('');
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // モードのデフォルト値を設定
+  const [mode, setMode] = useState({
+    gender: 'female', // デフォルトは女性
+    length: 'short',  // デフォルトは短文
+  });
 
   // 初回レンダリング時に localStorage から履歴を取得
   useEffect(() => {
@@ -28,7 +35,7 @@ const generateExcuse = useCallback(async (input) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ input }),
+      body: JSON.stringify({ input, mode }),
     });
 
     if (!response.ok) {
@@ -58,6 +65,7 @@ const generateExcuse = useCallback(async (input) => {
       {error && <p className={styles.errorMessage}>エラー: {error}</p>}
       <ExcuseDisplay excuse={excuse} />
       <InputForm onSubmit={generateExcuse} />
+      <ModeButton mode={mode} setMode={setMode} /> 
     </div>
   );
 }
