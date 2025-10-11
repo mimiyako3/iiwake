@@ -8,7 +8,7 @@ import MainPage from './components/MainPage.jsx';
 import HistoryPage from './components/HistoryPage.jsx';
 // import ErrorBoundary from './components/ErrorBoundary.jsx';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
@@ -19,4 +19,3 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>
 );
-

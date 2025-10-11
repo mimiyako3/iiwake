@@ -1,11 +1,15 @@
 // frontend/src/components/ExcuseDisplay.jsx
-import React from 'react';
-import styles from '../styles/MainPage.module.css';
+import React from "react";
+import styles from "../styles/MainPage.module.css";
 
 function ExcuseDisplay({ excuse }) {
-    // データがない場合は表示しない
+    //データがない場合は表示しない
     if (!excuse || (!excuse.elegantText && !excuse.meaning)) {
-        return null; 
+          return (
+         <div className={styles.excuseContainer}>
+         <h2>いかにおはしますや(元気でいらっしゃいますか？)</h2>
+         </div>
+  ); 
     }
 
     // 💡 コピー処理をハンドルする関数
