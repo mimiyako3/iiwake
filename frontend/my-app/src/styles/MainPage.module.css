@@ -6,13 +6,13 @@
 
 /* MainPage用 */
 .mainPageCenter h1 {
-  position: fixed; /* 画面上で固定表示（スクロールしても動かない） */
+  position: absolute;
+  text-align: left; /* ←左寄せ */
   top: 20px; /* 上から20pxの位置 */
   left: 40px; /* 左から20pxの位置 */
   font-size: 28px; /* 文字サイズ */
   font-weight: bold; /* 太字 */
   color: #333; /* 文字色 */
-  z-index: 1000;
   font-family: "Yu Mincho", "YuMincho", serif;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .historyPageContainer h1 {
-  position: fixed; /* 画面上で固定表示（スクロールしても動かない） */
+  position: absolute;
   top: 20px; /* 上から20pxの位置 */
   left: 40px; /* 左から20pxの位置 */
   font-size: 28px; /* 文字サイズ */
@@ -121,15 +121,16 @@
 }
 
 .historyLink {
-  position: fixed; /* 画面上で固定表示（スクロールしても動かない） */
-  top: 20px; /* 上から20pxの位置 */
-  right: 40px; /* 左から20pxの位置 */
-  font-size: 28px; /* 文字サイズ */
-  font-weight: bold; /* 太字 */
-  color: #333; /* 文字色 */
+  position: fixed; /* ←画面全体を基準に配置！ */
+  top: 20px; /* 上から20px */
+  right: 40px; /* ←右端から40px */
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
   border-radius: 8px;
   border: 1px solid black;
   padding: 4px 8px;
+  background-color: gainsboro;
   font-family: "Yu Mincho", "YuMincho", serif;
 }
 
