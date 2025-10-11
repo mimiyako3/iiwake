@@ -23,7 +23,7 @@ function HistoryPage() {
       <ExcuseHistory history={history} />
       <br />
       <Link to="/main" className={styles.historyLink}>メインページへ</Link>
-      <Link to="/start">スタートページへ</Link>
+      <Link to="/">スタートページへ</Link>
       <Footer />
     </div>
   );

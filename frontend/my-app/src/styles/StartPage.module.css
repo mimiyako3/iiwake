@@ -3,11 +3,10 @@
 /* ページ全体の背景 */
 .startPageContainer {
   background: 
-    /*金雲絵 url('https://media.discordapp.net/attachments/1425304722381869157/1426523492953620480/a036b10619255c93.png?ex=68eb8908&is=68ea3788&hm=266dcde4af0c6f9c654d2cdc53d960e1149535fb935584f76de391a845044e96&=&format=webp&quality=lossless&width=810&height=679') no-repeat, */
     /* 金雲っぽい */radial-gradient(circle at top right, rgba(163, 228, 228, 0.3), transparent 70%), 
-    /*花*/url('https://media.discordapp.net/attachments/1425304722381869157/1426523493436231841/adcd1da467a2bdce.png?ex=68eb8908&is=68ea3788&hm=3394b6bf1b34e88a3fbf12646f2033eabb5f312163bab96239ea6e8840e299be&=&format=webp&quality=lossless&width=1098&height=920')no-repeat,
-    /*女性貴族*/url('https://media.discordapp.net/attachments/1425304722381869157/1426523490667860038/d09b3d0806b59901.png?ex=68eb8907&is=68ea3787&hm=8cc353da138f86c90d88f10f653c9c679a5238897c8db1727dcafdd474687884&=&format=webp&quality=lossless&width=1098&height=920')no-repeat left bottom -10%,
-    /*男性貴族*/url('https://media.discordapp.net/attachments/1425304722381869157/1426523491313909770/04a12db76c024793.png?ex=68eb8907&is=68ea3787&hm=d4e4440f131d003f94990adc3fbeeaf00e0e7ecd7e09f4689c3ed654f7030a07&=&format=webp&quality=lossless&width=810&height=679')no-repeat right bottom;
+    url('花.png')no-repeat,
+    url('女性.png')no-repeat left bottom -10%,
+    url('男性.png')no-repeat right bottom;
     
   background-size: cover, cover, 30%,  30% ;
   background-blend-mode: overlay;
