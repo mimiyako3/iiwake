@@ -55,7 +55,12 @@
 }
 
 .historyPageContainer {
-  padding: 20px;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  border-radius: 5px;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 .historyPageContainer h1 {
@@ -71,20 +76,27 @@
 .historyContainer {
   margin-top: 20px;
   padding: 10px;
-  border: 1px solid #c83535;
   border-radius: 5px;
-  background-color: #f2acac;
+}
+
+.historyContainer > h2 {
+  margin: 0 0 16px;
+  text-align: center;
 }
 
 .historyContainer ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .historyContainer li {
   margin-bottom: 10px;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+}
+
+.historyItem {
+  padding: 16px 0;
 }
 
 .historyItem p {

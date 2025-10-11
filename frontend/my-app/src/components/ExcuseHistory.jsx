@@ -14,7 +14,7 @@ function ExcuseHistory({ history }) {
                 <strong>入力:</strong> {item.input}
               </div>
               <img
-                src="/ユーザーアイコン(女).png" /* ← /public は付けない */
+                src="/ユーザーアイコン(女).png"
                 alt="ユーザーアイコン"
                 className={styles.icon}
               />
@@ -22,11 +22,7 @@ function ExcuseHistory({ history }) {
 
             {/* AI行（左寄せ） */}
             <div className={styles.aiSide}>
-              <img
-                src="/男性.png" /* ← /public は付けない */
-                alt="AIアイコン"
-                className={styles.icon}
-              />
+              <img src="/男性.png" alt="AIアイコン" className={styles.icon} />
               <div className={styles.message}>
                 <strong>出力:</strong> {item.output}
               </div>
