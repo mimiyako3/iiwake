@@ -1,3 +1,10 @@
+import React, { useState, useCallback, useEffect } from 'react';
+import InputForm from './InputForm';
+import ExcuseDisplay from './ExcuseDisplay';
+import styles from '../styles/MainPage.module.css';
+import { Link } from 'react-router-dom';
+import ModeButton from './ModeButton';
+import Footer from './Footer.jsx';
 import React, { useState, useCallback, useEffect } from "react";
 import InputForm from "./InputForm";
 import ExcuseDisplay from "./ExcuseDisplay";
@@ -5,10 +12,17 @@ import styles from "../styles/MainPage.module.css";
 import { Link } from "react-router-dom";
 
 function MainPage() {
+  const [excuse, setExcuse] = useState({ elegantText: '', meaning: '' });
   const [excuse, setExcuse] = useState("");
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // モードのデフォルト値を設定
+  const [mode, setMode] = useState({
+    gender: 'female', // デフォルトは女性
+    length: 'short',  // デフォルトは短文
+  });
 
   // 初回レンダリング時に localStorage から履歴を取得
   useEffect(() => {
@@ -29,16 +43,37 @@ function MainPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ input }),
+          body: JSON.stringify({ input, mode }),
         });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
+    const data = await response.json();
+    console.log("バックエンドからのデータ:", data.excuse);
+
+    setExcuse({ elegantText: data.excuse.elegantText, meaning: data.excuse.meaning });
+    
         const data = await response.json();
         setExcuse(data.excuse);
 
+    // 入力内容と生成された言い訳をオブジェクト形式で履歴に保存
+    const newHistoryItem = { 
+      input, 
+      output: data.excuse.elegantText,
+      meaning: data.excuse.meaning 
+    };
+    const newHistory = [newHistoryItem, ...history];
+    setHistory(newHistory);
+    localStorage.setItem('excuseHistory', JSON.stringify(newHistory));
+  } catch (e) {
+    setError(e.message);
+    console.error("エラー:", e);
+  } finally {
+    setIsLoading(false);
+  }
+}, [history]);
         // 入力内容と生成された言い訳をオブジェクト形式で履歴に保存
         const newHistoryItem = { input, output: data.excuse };
         const newHistory = [newHistoryItem, ...history];
@@ -61,6 +96,11 @@ function MainPage() {
         </Link>
         <h1>やんごとなき言い訳</h1>
 
+      {error && <p className={styles.errorMessage}>エラー: {error}</p>}
+      <ExcuseDisplay excuse={excuse} />
+      <InputForm onSubmit={generateExcuse} />
+      <ModeButton mode={mode} setMode={setMode} /> 
+      <Footer />
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
         <div className={styles.inputOutputContainer}>
           <img src="/男性.png" alt="AIアイコン" className={styles.icon} />
