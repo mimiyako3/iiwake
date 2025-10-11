@@ -4,9 +4,6 @@ import styles from "../styles/MainPage.module.css";
 
 function ExcuseDisplay({ excuse }) {
   // データがない場合は表示しない
-  if (!excuse || (!excuse.elegantText && !excuse.meaning)) {
-    return null;
-  }
 
   // 💡 コピー処理をハンドルする関数
   const handleCopy = () => {
@@ -26,7 +23,9 @@ function ExcuseDisplay({ excuse }) {
 
   return (
     <div className={styles.excuseContainer}>
-      <h2>雅文</h2>
+      {!excuse?.elegantText && !excuse?.meaning && (
+        <h2>いかにおはしますや(元気でいらっしゃいますか？)</h2>
+      )}
       {/* 雅文の表示 */}
       {excuse.elegantText && (
         <p className={styles.elegantText}>{excuse.elegantText}</p>
@@ -41,13 +40,15 @@ function ExcuseDisplay({ excuse }) {
       )}
 
       {/* 💡 コピーボタンの修正 */}
-      <button
-        onClick={handleCopy}
-        className={styles.copyButton}
-        title="雅文のみをクリップボードにコピー" // ツールチップも修正
-      >
-        📋 雅文のみコピー
-      </button>
+      {excuse?.elegantText && (
+        <button
+          onClick={handleCopy}
+          className={styles.copyButton}
+          title="雅文のみをクリップボードにコピー" // ツールチップも修正
+        >
+          📋 雅文のみコピー
+        </button>
+      )}
     </div>
   );
 }
