@@ -4,6 +4,7 @@ import ExcuseDisplay from './ExcuseDisplay';
 import styles from '../styles/MainPage.module.css';
 import { Link } from 'react-router-dom';
 import ModeButton from './ModeButton';
+import Footer from './Footer.jsx';
 
 function MainPage() {
   const [excuse, setExcuse] = useState({ elegantText: '', meaning: '' });
@@ -49,7 +50,11 @@ const generateExcuse = useCallback(async (input) => {
     
 
     // 入力内容と生成された言い訳をオブジェクト形式で履歴に保存
-    const newHistoryItem = { input, output: data.excuse.elegantText, meaning: data.excuse.meaning };
+    const newHistoryItem = { 
+      input, 
+      output: data.excuse.elegantText,
+      meaning: data.excuse.meaning 
+    };
     const newHistory = [newHistoryItem, ...history];
     setHistory(newHistory);
     localStorage.setItem('excuseHistory', JSON.stringify(newHistory));
@@ -69,6 +74,7 @@ const generateExcuse = useCallback(async (input) => {
       <ExcuseDisplay excuse={excuse} />
       <InputForm onSubmit={generateExcuse} />
       <ModeButton mode={mode} setMode={setMode} /> 
+      <Footer />
     </div>
   );
 }
