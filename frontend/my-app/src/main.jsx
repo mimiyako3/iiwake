@@ -1,22 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from "react-router-dom";
-import './index.css'
-import App from './App.jsx'
-import StartPage from './components/start.jsx'; //start.jsx をインポート
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Route を追加
+import App from './App.jsx';
+import StartPage from './components/start.jsx';
+import MainPage from './components/MainPage.jsx';
+import HistoryPage from './components/HistoryPage.jsx';
+// import ErrorBoundary from './components/ErrorBoundary.jsx';
 
-
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
-      <StartPage />
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+      </Routes>
     </BrowserRouter>
+  </StrictMode>
 );
 
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-//     <StartPage />
-//   </StrictMode>,
-// )

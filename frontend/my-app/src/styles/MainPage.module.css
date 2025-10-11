@@ -1,0 +1,83 @@
+/* App.ja用 */
+.appContainer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* MainPage用 */
+.mainPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.backLink {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  color: blue;
+  text-decoration: none;
+}
+
+/* InputForm用 */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.inputArea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ExcuseDisplay用 */
+.excuseContainer {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.historyPageContainer {
+  padding: 20px;
+}
+
+.historyContainer {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #c83535;
+  border-radius: 5px;
+  background-color: #f2acac;
+}
+
+.historyContainer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.historyContainer li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.historyItem p {
+  margin: 5px 0;
+}

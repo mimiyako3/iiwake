@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MainPage from './MainPage.jsx';
 
 function StartButton() {
   const navigate = useNavigate();
