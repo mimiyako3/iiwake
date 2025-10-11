@@ -3,6 +3,7 @@ import InputForm from './InputForm';
 import ExcuseDisplay from './ExcuseDisplay';
 import styles from '../styles/MainPage.module.css';
 import { Link } from 'react-router-dom';
+import Footer from './Footer.jsx';
 
 function MainPage() {
   const [excuse, setExcuse] = useState('');
@@ -58,6 +59,7 @@ const generateExcuse = useCallback(async (input) => {
       {error && <p className={styles.errorMessage}>エラー: {error}</p>}
       <ExcuseDisplay excuse={excuse} />
       <InputForm onSubmit={generateExcuse} />
+      <Footer />
     </div>
   );
 }

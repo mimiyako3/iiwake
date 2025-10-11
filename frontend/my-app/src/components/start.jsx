@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MainPage from './MainPage.jsx';
+import Footer from './Footer.jsx';
 
 function StartButton() {
   const navigate = useNavigate();
@@ -100,6 +101,7 @@ function HelpButton() {
   );
 }
 
+
 function StartPage() {
   return (
     <div 
@@ -159,6 +161,7 @@ function StartPage() {
       {/* 下部ボタン */}
       <StartButton />
     </div>
+      <Footer />
     </div>
   );
 }

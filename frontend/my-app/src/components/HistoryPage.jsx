@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ExcuseHistory from './ExcuseHistory';
 import styles from '../styles/MainPage.module.css';
 import { Link } from 'react-router-dom';
+import Footer from './Footer.jsx';
 
 function HistoryPage() {
   const [history, setHistory] = useState([]);
@@ -22,6 +23,7 @@ function HistoryPage() {
       <br />
       <Link to="/" style={{ marginRight: '2em' }}>スタートページへ</Link>
       <Link to="/main">メインページへ</Link>
+      <Footer />
     </div>
   );
 }
