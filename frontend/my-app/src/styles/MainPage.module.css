@@ -139,6 +139,8 @@
   max-width: 70%;
   line-height: 1.5;
   text-align: left;
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: bold; /* 太字 */
 }
 
 /* ユーザー吹き出し（右寄せ） */
@@ -148,4 +150,6 @@
   border-radius: 10px;
   max-width: 70%;
   text-align: right;
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: bold; /* 太字 */
 }
