@@ -1,9 +1,9 @@
 // frontend/src/components/InputForm.jsx
-import React, { useState } from 'react';
-import styles from '../styles/MainPage.module.css';
+import React, { useState } from "react";
+import styles from "../styles/MainPage.module.css";
 
 function InputForm({ onSubmit }) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -12,7 +12,7 @@ function InputForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(input);
-    setInput('');
+    setInput("");
   };
 
   return (
@@ -22,6 +22,13 @@ function InputForm({ onSubmit }) {
         value={input}
         onChange={handleInputChange}
         placeholder="今の状況を入力してください"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            // ShiftなしEnterで送信
+            e.preventDefault(); // 改行を防ぐ
+            handleSubmit(e); // 送信処理呼び出し
+          }
+        }}
       />
       <button type="submit" className={styles.submitButton}>
         生成

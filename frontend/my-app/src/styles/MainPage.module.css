@@ -165,32 +165,6 @@
   margin: 5px 0;
 }
 
-/* モード選択ボタン */
-
-.modeButtonContainer {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.modeOptions {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.modeOptions div {
-  display: flex;
-  flex-direction: column;
-}
-
-.modeOptions label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 /* === AI（左寄せで横並び）=== */
 .aiSide {
   display: flex;
@@ -240,4 +214,29 @@
   text-align: right;
   font-family: "Yu Mincho", "YuMincho", serif;
   font-weight: bold; /* 太字 */
+}
+/* モード選択ボタン */
+
+.modeButtonContainer {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.modeOptions {
+  display: flex;
+  gap: 20px;
+}
+
+.modeOptions div {
+  display: flex;
+  flex-direction: column;
+}
+
+.modeOptions label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

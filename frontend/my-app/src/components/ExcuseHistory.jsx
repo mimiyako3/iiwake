@@ -1,12 +1,12 @@
-// frontend/src/components/ExcuseHistory.jsx (修正)
+// frontend/src/components/ExcuseHistory.jsx (修正版)
+
 import React from "react";
 import styles from "../styles/MainPage.module.css";
 
-// 💡 文字列であることを保証するユーティリティ関数を定義 (コンポーネントの外で定義するのが一般的)
+// 💡 文字列であることを保証するユーティリティ関数
 const ensureString = (value) => {
     if (!value) return '';
     if (typeof value === 'object') {
-        // オブジェクトの場合はJSON文字列に変換
         return JSON.stringify(value); 
     }
     return value;
@@ -28,26 +28,38 @@ function ExcuseHistory({ history }) {
       <h2>履歴</h2>
       <ul>
         {history.map((item, index) => {
-          console.log("履歴アイテム:", item.mode); 
-
-          const aiGender = item.mode === 'female' ? '女性' : '男性';
+          
+          // 🚨 修正: 履歴アイテムの mode が存在し、genderプロパティを持つか確認
+          //    古い履歴データ対策として防御的なチェックを導入
+          const currentGender = (
+            item.mode && 
+            typeof item.mode === 'object' && 
+            item.mode.gender
+          )
+            ? item.mode.gender // 存在すればその値を使用
+            : 'female';        // 存在しない場合は 'female' をデフォルトとする
+          
+          const aiGender = currentGender === 'female' ? '女性' : '男性';
           const aiIconPath =
             aiGender === '女性' ? '/女性.png' : '/男性.png';
 
+          // 🚨 修正: 処理結果を一つの return で返す
           return (
             <li key={index} className={styles.historyItem}>
               
+              {/* 1. ユーザー行（右寄せ）: 入力/お題 */}
               <div className={styles.userSide}>
                 <div className={styles.userInput}>
-                  {ensureString(item.input)}
+                  <strong>お題:</strong> {ensureString(item.input)}
                 </div>
                 <img
-                  src="/ユーザーアイコン(女).png" // 👈 固定アイコンのパスに修正
+                  src="/ユーザーアイコン(女).png" // ユーザーアイコンは固定
                   alt="ユーザーアイコン"
                   className={styles.icon}
                 />
               </div>
 
+              {/* 2. AI行（左寄せ）: 雅文 (output) */}
               <div className={styles.aiSide}>
                 <img src={aiIconPath} alt={`${aiGender}`} className={styles.icon} />
                 <div className={styles.message}>
@@ -65,7 +77,7 @@ function ExcuseHistory({ history }) {
               
               <hr className={styles.divider} />
             </li>
-          );
+          ); // 👈 mapのコールバック関数はここで終了
         })}
       </ul>
     </div>
