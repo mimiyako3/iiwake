@@ -14,8 +14,8 @@ function MainPage() {
 
   // モードのデフォルト値を設定
   const [mode, setMode] = useState({
-    gender: "female", // デフォルトは女性
-    length: "short", // デフォルトは短文
+    gender: "female", 
+    length: "short"
   });
 
   // 初回レンダリング時に localStorage から履歴を取得
@@ -32,6 +32,7 @@ function MainPage() {
       setError(null);
 
       try {
+        console.log("送信するモード:", mode);
         const response = await fetch("http://localhost:3000/api/excuse", {
           method: "POST",
           headers: {
@@ -47,22 +48,29 @@ function MainPage() {
         const data = await response.json();
         console.log("バックエンドからのデータ:", data.excuse);
 
-        setExcuse({
-          elegantText: data.excuse.elegantText,
-          meaning: data.excuse.meaning,
-        });
+        // setExcuse({
+        //   elegantText: data.excuse.elegantText,
+        //   meaning: data.excuse.meaning,
+        // });
 
         setExcuse(data.excuse);
 
-        // 入力内容と生成された言い訳をオブジェクト形式で履歴に保存
+        setHistory((prevHistory) => {
+        const safePrevHistory = Array.isArray(prevHistory) ? prevHistory : [];
+
         const newHistoryItem = {
           input,
           output: data.excuse.elegantText,
           meaning: data.excuse.meaning,
+          mode: mode.gender,
         };
+        console.log("新しい履歴アイテム:", newHistoryItem);
+
         const newHistory = [newHistoryItem, ...history];
         setHistory(newHistory);
         localStorage.setItem("excuseHistory", JSON.stringify(newHistory));
+        return newHistory
+      });
       } catch (e) {
         setError(e.message);
         console.error("エラー:", e);
@@ -70,7 +78,7 @@ function MainPage() {
         setIsLoading(false);
       }
     },
-    [history]
+    [mode]
   );
 
   return (
@@ -83,7 +91,10 @@ function MainPage() {
 
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
         <div className={styles.inputOutputContainer}>
-          <img src="/男性.png" alt="AIアイコン" className={styles.icon} />
+          <img
+            src={mode.gender === "female" ? "/女性.png" : "/男性.png"}
+            alt="AIアイコン" className={styles.icon}
+          />
           <div className={styles.excuseDisplayContainer}>
             <ExcuseDisplay excuse={excuse} />
           </div>
@@ -98,7 +109,7 @@ function MainPage() {
             <InputForm onSubmit={generateExcuse} />
           </div>
           <img
-            src="/ユーザーアイコン(女).png"
+            src={mode.gender === "female" ? "/ユーザーアイコン(女).png" : "/ユーザーアイコン(男).png"}
             alt="ユーザーアイコン"
             className={styles.icon}
           />

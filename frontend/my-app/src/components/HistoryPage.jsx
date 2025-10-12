@@ -4,6 +4,7 @@ import styles from '../styles/MainPage.module.css';
 import { Link } from 'react-router-dom';
 import Footer from './Footer.jsx';
 
+
 function HistoryPage() {
   const [history, setHistory] = useState([]);
 
@@ -18,11 +19,10 @@ function HistoryPage() {
   return (
     <div className={styles.historyPageContainer}>
       <h1>履歴ページ</h1>
-      <p>ここに履歴が表示されます。</p>
       <ExcuseHistory history={history} />
       <br />
-      <Link to="/" style={{ marginRight: '2em' }}>スタートページへ</Link>
-      <Link to="/main">メインページへ</Link>
+      <Link to="/main" className={styles.historyLink}>メインページへ</Link>
+      <Link to="/">スタートページへ</Link>
       <Footer />
     </div>
   );

@@ -165,6 +165,31 @@
   margin: 5px 0;
 }
 
+/* styles.module.css など */
+.excuseContainer {
+  position: relative; /* 👈 ボタンをこの中で絶対位置指定できるように */
+  padding: 1.5em;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.copyButton {
+  position: absolute;
+  bottom: -3px;  /* 👈 右下 */
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.copyButton:hover {
+  color: #222;
+}
+
+
 /* === AI（左寄せで横並び）=== */
 .aiSide {
   display: flex;

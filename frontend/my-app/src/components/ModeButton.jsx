@@ -5,7 +5,7 @@ function ModeButton({ mode, setMode }) {
   const handleGenderChange = (e) => {
     setMode((prevMode) => ({
       ...prevMode,
-      gender: e.target.value, // 性別モードを更新
+      gender: e.target.value, 
     }));
   };
 

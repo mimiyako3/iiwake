@@ -1,6 +1,7 @@
 // frontend/src/components/ExcuseDisplay.jsx
 import React from "react";
 import styles from "../styles/MainPage.module.css";
+import { FiCopy } from "react-icons/fi"; // Feather Icons のコピーアイコン
 
 function ExcuseDisplay({ excuse }) {
   // データがない場合は表示しない
@@ -46,7 +47,7 @@ function ExcuseDisplay({ excuse }) {
           className={styles.copyButton}
           title="雅文のみをクリップボードにコピー" // ツールチップも修正
         >
-          📋 雅文のみコピー
+          <FiCopy size={22} /> 
         </button>
       )}
     </div>
