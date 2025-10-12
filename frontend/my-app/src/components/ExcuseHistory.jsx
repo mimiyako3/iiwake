@@ -2,6 +2,8 @@
 
 import React from "react";
 import styles from "../styles/MainPage.module.css";
+import { FiCopy, FiShare2 } from "react-icons/fi";
+
 
 // 💡 文字列であることを保証するユーティリティ関数
 const ensureString = (value) => {
@@ -23,12 +25,30 @@ function ExcuseHistory({ history }) {
     );
   }
 
+  // 💡 コピー処理をハンドルする関数をここに定義
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("雅文（言い訳本文）をコピーしました！");
+      })
+      .catch((err) => {
+        console.error("コピーに失敗しました:", err);
+        alert("コピーに失敗しました。ブラウザの設定を確認してください。");
+      });
+  };
+
+
+
   return (
     <div className={styles.historyContainer}>
       <h2>履歴</h2>
       <ul>
         {history.map((item, index) => {
           console.log("履歴アイテム:", item);
+
+          const outputText = ensureString(item.output);
+          const shouldShowCopyButton = outputText.length > 0;
 
           const aiGender = item.mode === 'female' ? '女性' : '男性';
           const aiIconPath = aiGender === '女性' ? '/女性.png' : '/男性.png';
@@ -56,7 +76,17 @@ function ExcuseHistory({ history }) {
               <div className={styles.aiSide}>
                 <img src={aiIconPath} alt={`${aiGender}`} className={styles.icon} />
                 <div className={styles.message}>
-                  <p className={styles.elegantText}>{ensureString(item.output)}</p>
+                  <p className={styles.elegantText}>{ensureString(item.output)} </p>
+
+                   {shouldShowCopyButton && (
+                      <button
+                        onClick={() => handleCopy(item.output)} 
+                        className={styles.copyButton} 
+                        title="この雅文をコピー"
+                      >
+                        <FiCopy size={18} /> 
+                      </button>
+                    )}
                   
                   {item.meaning && (
                       <p className={styles.meaning}>

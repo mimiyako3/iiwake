@@ -249,6 +249,84 @@
   color: #222;
 }
 
+/* 共有ボタンについて */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.sharePopup {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5em 2em;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.2s ease-in-out;
+  min-width: 260px;
+}
+
+.sharePopup p {
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.shareIcons {
+
+  display: flex;
+  justify-content: center;
+  gap: 1.2em;
+  margin-bottom: 1.2em;
+  margin-top: 10px;
+}
+
+.twitterButton {
+  color: #1da1f2;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lineButton {
+  color: #06c755;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.copyButtonPopup {
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.closeButton {
+  background: #ccc;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+.twitterButton { color: #1da1f2; }
+.lineButton { color: #06c755; }
+.mailButton { color: #dd4b39; }
+.discordButton { color: #5865f2; }
+.slackButton { color: #4a154b; }
+.copyButtonPopup { color: #444; }
+.closeButton { margin-top: 1rem; }
+
 /* === AI（左寄せで横並び）=== */
 .aiSide {
   display: flex;
@@ -327,98 +405,30 @@
   gap: 5px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .excuseContainer {
-    width: 100%; /* ビューポート幅全体を使う */
-    box-sizing: border-box;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: "Yu Mincho", "YuMincho", serif;
-    background-color: #333;
-  }
-
-  .copyButton {
-    position: absolute;
-    bottom: -3px; /* 👈 右下 */
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: gray;
-    transition: color 0.2s ease;
-  }
-
-  .copyButton:hover {
-    color: white;
-  }
-  .message {
-    background-color: black;
-    padding: 12px 16px;
-    border-radius: 10px;
-    max-width: 70%;
-    line-height: 1.5;
-    text-align: left;
-    font-family: "Yu Mincho", "YuMincho", serif;
-    font-weight: bold; /* 太字 */
-  }
-
-  .userInput {
-    background-color: black;
-    padding: 12px 16px;
-    border-radius: 10px;
-    max-width: 70%;
-    text-align: right;
-    font-family: "Yu Mincho", "YuMincho", serif;
-    font-weight: bold; /* 太字 */
-  }
-
-  .historyPageContainer h1 {
-    position: absolute;
-    left: 40px; /* 左から20pxの位置 */
-    font-size: 28px; /* 文字サイズ */
-    font-weight: bold; /* 太字 */
-    z-index: 1000;
-    font-family: "Yu Mincho", "YuMincho", serif;
-    top: 30px;
-    font-weight: 600;
-    color: white;
-    font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
-    letter-spacing: 0.15em;
-    text-align: center;
-    text-shadow: 2px 2px 6px black;
-    border-bottom: 2px solid white;
-    padding-bottom: 6px;
-    width: fit-content;
-    transition: all 0.3s ease;
-  }
-
-  .title {
-    position: absolute;
-    top: 20px; /* 上から20pxの位置 */
-    left: 40px; /* 左から20pxの位置 */
-    font-size: 28px; /* 文字サイズ */
-    font-weight: bold; /* 太字 */
-    z-index: 1000;
-    font-family: "Yu Mincho", "YuMincho", serif;
-    top: 30px;
-    font-weight: 600;
-    color: white;
-    font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
-    letter-spacing: 0.15em;
-    text-align: center;
-    text-shadow: 2px 2px 6px black;
-    border-bottom: 2px solid white;
-    padding-bottom: 6px;
-    width: fit-content;
-    transition: all 0.3s ease;
-  }
-
-  .linkStart {
-    color: lightgray;
-  }
-
-  .linkStart:hover {
-    color: white;
-  }
+/* === コピー・共有ボタン横並び === */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end; /* 右寄せ */
+  align-items: center;
+  gap: 8px; /* ボタン間の余白 */
+  margin-top: 8px;
+  position: relative; /* 子要素の位置制御を正常化 */
 }
+
+/* 共通ボタンスタイル */
+.copyButton,
+.shareButton {
+  background: none ;
+  border: none;
+  color: #444;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  position: static; /* ←絶対配置を無効化 */
+}
+
+.copyButton:hover,
+.shareButton:hover {
+  color: #000;
+  transform: scale(1.2);
+}
+
