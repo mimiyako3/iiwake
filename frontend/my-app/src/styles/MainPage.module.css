@@ -159,6 +159,11 @@
   outline: none; 
 }
 
+.historyLink:hover {
+  color: white;
+  background-color: rgb(110, 109, 109);
+}
+
 .historyContainer {
   margin-top: 20px;
   padding: 10px;
@@ -201,7 +206,7 @@
 
 .copyButton {
   position: absolute;
-  bottom: -3px;  /* 👈 右下 */
+  bottom: -3px; /* 👈 右下 */
   right: 10px;
   background: none;
   border: none;
@@ -213,7 +218,6 @@
 .copyButton:hover {
   color: #222;
 }
-
 
 /* === AI（左寄せで横並び）=== */
 .aiSide {
@@ -284,11 +288,58 @@
 .modeOptions div {
   display: flex;
   flex-direction: column;
-  
+  font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
 }
 
 .modeOptions label {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .excuseContainer {
+    width: 100%; /* ビューポート幅全体を使う */
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    background-color: #333;
+  }
+
+  .copyButton {
+    position: absolute;
+    bottom: -3px; /* 👈 右下 */
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.2s ease;
+  }
+
+  .copyButton:hover {
+    color: white;
+  }
+  .message {
+    background-color: black;
+    padding: 12px 16px;
+    border-radius: 10px;
+    max-width: 70%;
+    line-height: 1.5;
+    text-align: left;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    font-weight: bold; /* 太字 */
+  }
+
+  .userInput {
+    background-color: black;
+    padding: 12px 16px;
+    border-radius: 10px;
+    max-width: 70%;
+    text-align: right;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    font-weight: bold; /* 太字 */
+  }
 }
