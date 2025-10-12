@@ -219,6 +219,12 @@
   margin: 5px 0;
 }
 
+.historyPageContainer p {
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: bold; /* 太字 */
+  margin-top: 40px;
+}
+
 /* styles.module.css など */
 .excuseContainer {
   position: relative; /* 👈 ボタンをこの中で絶対位置指定できるように */
