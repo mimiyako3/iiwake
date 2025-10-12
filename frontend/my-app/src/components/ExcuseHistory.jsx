@@ -76,9 +76,10 @@ function ExcuseHistory({ history }) {
               <div className={styles.aiSide}>
                 <img src={aiIconPath} alt={`${aiGender}`} className={styles.icon} />
                 <div className={styles.message}>
-                  <p className={styles.elegantText}>{ensureString(item.output)} </p>
+                  <div className={styles.elegantText}>{ensureString(item.output)} </div>
 
                    {shouldShowCopyButton && (
+                     <div className={styles.historyCopyButton}>
                       <button
                         onClick={() => handleCopy(item.output)} 
                         className={styles.copyButton} 
@@ -86,14 +87,15 @@ function ExcuseHistory({ history }) {
                       >
                         <FiCopy size={18} /> 
                       </button>
-                    )}
-                  
+                    </div>
+                  )}
+
                   {item.meaning && (
-                      <p className={styles.meaning}>
-                          <br />
-                          <strong>【意味】</strong><br />
+                      <div className={styles.meaningText}>
+
+                          <strong>【意味】</strong>
                           {ensureString(item.meaning)}
-                      </p>
+                      </div>
                   )}
                 </div>
               </div>

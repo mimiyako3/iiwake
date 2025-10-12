@@ -249,6 +249,14 @@
   color: #222;
 }
 
+.historyCopyButton{
+  display: flex;
+  justify-content: flex-end; 
+  width: 100%; 
+  margin-top: 8px; /* 本文との間に少し隙間を作る */
+  padding-right: 4px; /* 吹き出しの端から少し離す調整 */
+}
+
 /* 共有ボタンについて */
 .overlay {
   position: fixed;
