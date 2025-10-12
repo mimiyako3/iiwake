@@ -104,6 +104,21 @@
   font-family: "Yu Mincho", "YuMincho", serif;
 }
 
+.meaningText {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+    width: 100%; /* ビューポート幅全体を使う */
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Yu Mincho", "YuMincho", serif;
+
+}
+
+/* HistoryPage用 */
+
 .historyPageContainer {
   width: 100vw;
   margin: 0 calc(50% - 50vw);

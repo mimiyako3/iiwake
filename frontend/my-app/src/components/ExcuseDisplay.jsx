@@ -5,12 +5,22 @@ import { FiCopy } from "react-icons/fi"; // Feather Icons のコピーアイコ�
 
 function ExcuseDisplay({ excuse }) {
   // データがない場合は表示しない
+  if (!excuse?.elegantText) {
+      // 本文も意味もない場合は、挨拶文を表示するロジックを維持
+      if (!excuse?.meaning) {
+          return (
+              <div className={styles.excuseContainer}>
+                  <h2>いかにおはしますや(元気でいらっしゃいますか？)</h2>
+              </div>
+          );
+      }
+      // 本文がないが意味がある場合（このアプリでは通常あり得ないが）は本文エリアは空
+      return null; 
+  }
 
   // 💡 コピー処理をハンドルする関数
   const handleCopy = () => {
-    // 🚨 雅文 (elegantText) のみを取得
     const textToCopy = excuse.elegantText;
-
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
@@ -24,24 +34,15 @@ function ExcuseDisplay({ excuse }) {
 
   return (
     <div className={styles.excuseContainer}>
-      {!excuse?.elegantText && !excuse?.meaning && (
-        <h2>いかにおはしますや(元気でいらっしゃいますか？)</h2>
-      )}
+
+      {/* データあり */}
+
       {/* 雅文の表示 */}
       {excuse.elegantText && (
         <p className={styles.elegantText}>{excuse.elegantText}</p>
       )}
 
-      {/* 意味の表示 */}
-      {excuse.meaning && (
-        <>
-          <h3>（意味）</h3>
-          <p className={styles.meaningText}>{excuse.meaning}</p>
-        </>
-      )}
-
-      {/* 💡 コピーボタンの修正 */}
-      {excuse?.elegantText && (
+       {/* コピーボタン */}
         <button
           onClick={handleCopy}
           className={styles.copyButton}
@@ -49,7 +50,17 @@ function ExcuseDisplay({ excuse }) {
         >
           <FiCopy size={22} /> 
         </button>
-      )}
+
+
+      {/* 意味の表示 */}
+      {/* {excuse.meaning && (
+        <>
+          <h3>【意味】</h3>
+          <p className={styles.meaningText}>{excuse.meaning}</p>
+        </>
+      )} */}
+
+     
     </div>
   );
 }

@@ -24,7 +24,7 @@ function ExcuseHistory({ history }) {
   }
 
   return (
-    <div className={styles.historyContainer}>
+    <div>
       <h2>履歴</h2>
       <ul>
         {history.map((item, index) => {

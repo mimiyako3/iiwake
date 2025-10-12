@@ -67,7 +67,7 @@ function MainPage() {
         console.log("新しい履歴アイテム:", newHistoryItem);
 
         const newHistory = [newHistoryItem, ...history];
-        setHistory(newHistory);
+        // setHistory(newHistory);
         localStorage.setItem("excuseHistory", JSON.stringify(newHistory));
         return newHistory
       });
@@ -81,6 +81,18 @@ function MainPage() {
     [mode]
   );
 
+  //意味のみを表示する
+ const MeaningDisplay = ({ meaning }) => {
+  if (!meaning) return null;
+  return (
+    <div className={styles.meaningContainer}>
+      <p className={styles.meaningText}>
+        <strong>意味:</strong> {meaning}
+      </p>
+    </div>
+  );
+  };
+
   return (
     <div className={styles.mainPageContainer}>
       <div className={styles.mainPageCenter}>
@@ -91,23 +103,36 @@ function MainPage() {
 
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
         <div className={styles.inputOutputContainer}>
+          {/* <div className={styles.aiOutputSectionr}> */}
           <img
             src={mode.gender === "female" ? "/女性.png" : "/男性.png"}
             alt="AIアイコン" className={styles.icon}
           />
-          <div className={styles.excuseDisplayContainer}>
+          {/* 出力表示 */}
+          {/* <div className={styles.excuseDisplayContainer}> */}
+          <div className={styles.excuseBubbleContainer}>
             {isLoading ? (
-              <p className={styles.loadingMessage}>生成中...</p>
+              <p className={styles.loadingMessage}>雅な言い訳を生成中です。少々お待ちください...</p>
             ) : (
-              <ExcuseDisplay excuse={excuse} />
+                    <>
+                <ExcuseDisplay
+                  excuse={{ elegantText: excuse.elegantText }}
+                />
+                {excuse.meaning && (
+                <MeaningDisplay meaning={excuse.meaning} />
+                )}
+              </>
             )}
           </div>
         </div>
 
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
+        
+        {/* モード選択 */}
         <ModeButton mode={mode} setMode={setMode} />
         <Footer />
 
+        {/* 入力フォームとユーザーアイコンの配置 */}
         <div className={styles.inputSection}>
           <div className={styles.inputFormContainer}>
             <InputForm onSubmit={generateExcuse} isLoading={isLoading} />
