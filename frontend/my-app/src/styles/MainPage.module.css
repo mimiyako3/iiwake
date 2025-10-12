@@ -176,7 +176,7 @@
 
 .copyButton {
   position: absolute;
-  bottom: -3px;  /* 👈 右下 */
+  bottom: -3px; /* 👈 右下 */
   right: 10px;
   background: none;
   border: none;
@@ -188,7 +188,6 @@
 .copyButton:hover {
   color: #222;
 }
-
 
 /* === AI（左寄せで横並び）=== */
 .aiSide {
@@ -258,6 +257,7 @@
 .modeOptions div {
   display: flex;
   flex-direction: column;
+  font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
 }
 
 .modeOptions label {
