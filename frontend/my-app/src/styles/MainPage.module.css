@@ -128,7 +128,8 @@
 }
 
 .historyLink:hover {
-  color: gray;
+  color: white;
+  background-color: rgb(110, 109, 109);
 }
 
 .historyContainer {
