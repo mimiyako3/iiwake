@@ -1,22 +1,17 @@
-//expresnpのモジュールを読み込む
-const express = require("express");
-// CORS ミドルウェアを読み込む
-const cors = require("cors");
+// backend/app.js
+const express = require('express');
+const cors = require('cors');
+const excuseRoutes = require('./routes/excuse');
 
-//expressをインスタンス化
-const app =express();
-//PORT番号を設定
-const PORT = 3000;
-// CORS を有効化
-app.use(cors()); 
+const app = express();
+const port = process.env.PORT || 3000;
 
-console.log("Hello World");
+app.use(cors());
+app.use(express.json());
 
-app.get("/api",(req,res)=>{
-    res.json("Women's Hackathon in Kyoto");
-});
+app.use('/api/excuse', excuseRoutes);
 
-//サーバーを起動する
-app.listen(PORT,()=>{
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+  console.log("GEMINI_API_KEY:", process.env.GEMINI_API_KEY);
 });
