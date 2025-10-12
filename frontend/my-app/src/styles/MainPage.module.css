@@ -100,13 +100,12 @@
   margin-top: 10px;
   font-size: 0.9em;
   color: #666;
-    width: 100%; /* ビューポート幅全体を使う */
+  width: 100%; /* ビューポート幅全体を使う */
   box-sizing: border-box;
   padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-family: "Yu Mincho", "YuMincho", serif;
-
 }
 
 /* HistoryPage用 */
@@ -181,7 +180,7 @@
   background-color: lightgray;
   color: #333;
   text-decoration: none;
-  outline: none; 
+  outline: none;
 }
 
 .historyLink:hover {
@@ -366,5 +365,54 @@
     text-align: right;
     font-family: "Yu Mincho", "YuMincho", serif;
     font-weight: bold; /* 太字 */
+  }
+
+  .historyPageContainer h1 {
+    position: absolute;
+    left: 40px; /* 左から20pxの位置 */
+    font-size: 28px; /* 文字サイズ */
+    font-weight: bold; /* 太字 */
+    z-index: 1000;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    top: 30px;
+    font-weight: 600;
+    color: white;
+    font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
+    letter-spacing: 0.15em;
+    text-align: center;
+    text-shadow: 2px 2px 6px black;
+    border-bottom: 2px solid white;
+    padding-bottom: 6px;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .title {
+    position: absolute;
+    top: 20px; /* 上から20pxの位置 */
+    left: 40px; /* 左から20pxの位置 */
+    font-size: 28px; /* 文字サイズ */
+    font-weight: bold; /* 太字 */
+    z-index: 1000;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    top: 30px;
+    font-weight: 600;
+    color: white;
+    font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
+    letter-spacing: 0.15em;
+    text-align: center;
+    text-shadow: 2px 2px 6px black;
+    border-bottom: 2px solid white;
+    padding-bottom: 6px;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .linkStart {
+    color: lightgray;
+  }
+
+  .linkStart:hover {
+    color: white;
   }
 }

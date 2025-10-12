@@ -24,7 +24,9 @@ function HistoryPage() {
       <Link to="/main" className={styles.historyLink}>
         戻る
       </Link>
-      <Link to="/">スタート画面へ</Link>
+      <Link to="/" className={styles.linkStart}>
+        スタート画面へ
+      </Link>
       <Footer />
     </div>
   );

@@ -14,8 +14,8 @@ function MainPage() {
 
   // モードのデフォルト値を設定
   const [mode, setMode] = useState({
-    gender: "female", 
-    length: "short"
+    gender: "female",
+    length: "short",
   });
 
   // 初回レンダリング時に localStorage から履歴を取得
@@ -56,21 +56,21 @@ function MainPage() {
         setExcuse(data.excuse);
 
         setHistory((prevHistory) => {
-        const safePrevHistory = Array.isArray(prevHistory) ? prevHistory : [];
+          const safePrevHistory = Array.isArray(prevHistory) ? prevHistory : [];
 
-        const newHistoryItem = {
-          input,
-          output: data.excuse.elegantText,
-          meaning: data.excuse.meaning,
-          mode: mode.gender,
-        };
-        console.log("新しい履歴アイテム:", newHistoryItem);
+          const newHistoryItem = {
+            input,
+            output: data.excuse.elegantText,
+            meaning: data.excuse.meaning,
+            mode: mode.gender,
+          };
+          console.log("新しい履歴アイテム:", newHistoryItem);
 
-        const newHistory = [newHistoryItem, ...history];
-        // setHistory(newHistory);
-        localStorage.setItem("excuseHistory", JSON.stringify(newHistory));
-        return newHistory
-      });
+          const newHistory = [newHistoryItem, ...history];
+          // setHistory(newHistory);
+          localStorage.setItem("excuseHistory", JSON.stringify(newHistory));
+          return newHistory;
+        });
       } catch (e) {
         setError(e.message);
         console.error("エラー:", e);
@@ -82,15 +82,15 @@ function MainPage() {
   );
 
   //意味のみを表示する
- const MeaningDisplay = ({ meaning }) => {
-  if (!meaning) return null;
-  return (
-    <div className={styles.meaningContainer}>
-      <p className={styles.meaningText}>
-        <strong>意味:</strong> {meaning}
-      </p>
-    </div>
-  );
+  const MeaningDisplay = ({ meaning }) => {
+    if (!meaning) return null;
+    return (
+      <div className={styles.meaningContainer}>
+        <p className={styles.meaningText}>
+          <strong>意味:</strong> {meaning}
+        </p>
+      </div>
+    );
   };
 
   return (
@@ -113,22 +113,20 @@ function MainPage() {
           {/* <div className={styles.excuseDisplayContainer}> */}
           <div className={styles.excuseBubbleContainer}>
             {isLoading ? (
-              <p className={styles.loadingMessage}>雅な言い訳を生成中です。少々お待ちください...</p>
+              <p className={styles.loadingMessage}>
+                雅な言い訳を生成中です。少々お待ちください...
+              </p>
             ) : (
-                    <>
-                <ExcuseDisplay
-                  excuse={{ elegantText: excuse.elegantText }}
-                />
-                {excuse.meaning && (
-                <MeaningDisplay meaning={excuse.meaning} />
-                )}
+              <>
+                <ExcuseDisplay excuse={{ elegantText: excuse.elegantText }} />
+                {excuse.meaning && <MeaningDisplay meaning={excuse.meaning} />}
               </>
             )}
           </div>
         </div>
 
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
-        
+
         {/* モード選択 */}
         <ModeButton mode={mode} setMode={setMode} />
         <Footer />
@@ -148,7 +146,9 @@ function MainPage() {
             className={styles.icon}
           />
         </div>
-         <Link className={styles.link} to="/">はじめに戻る</Link>
+        <Link className={styles.linkStart} to="/">
+          はじめに戻る
+        </Link>
       </div>
     </div>
   );
