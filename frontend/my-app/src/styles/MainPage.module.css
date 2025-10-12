@@ -248,13 +248,24 @@
 .copyButton:hover {
   color: #222;
 }
-
+.copyButton:active {
+  background-color: rgba(0, 0, 0, 0.15); 
+  color: #111;  
+  outline: none; 
+  border: none;
+}
 .historyCopyButton{
   display: flex;
   justify-content: flex-end; 
   width: 100%; 
   margin-top: 8px; /* 本文との間に少し隙間を作る */
   padding-right: 4px; /* 吹き出しの端から少し離す調整 */
+}
+
+.copyButton:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
 }
 
 /* 共有ボタンについて */
@@ -432,6 +443,11 @@
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
   position: static; /* ←絶対配置を無効化 */
+}
+.shareButton:focus{
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
 }
 
 .copyButton:hover,
