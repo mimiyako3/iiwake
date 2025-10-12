@@ -21,8 +21,8 @@ function HistoryPage() {
       <h1>履歴ページ</h1>
       <ExcuseHistory history={history} />
       <br />
-      <Link to="/main" className={styles.historyLink}>メインページへ</Link>
-      <Link to="/">スタートページへ</Link>
+      <Link to="/main" className={styles.historyLink}>戻る</Link>
+      <Link to="/" className={styles.link}>はじめに戻る</Link>
       <Footer />
     </div>
   );

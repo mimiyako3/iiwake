@@ -35,7 +35,7 @@
   padding: 0.8em 2em;
   font-size: 2.5em;
   border-radius: 20px;
-  border: 5px solid #1b1606; 
+  border: 2px solid #1b1606; 
   background-color: #fff8dc; 
   color: #4b3621; 
   cursor: pointer;
@@ -46,6 +46,7 @@
 }
 
 .startButton:hover {
+  color: #4b3621;
   background-color: #fff0b3; /* ホバーで少し明るく */
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 }

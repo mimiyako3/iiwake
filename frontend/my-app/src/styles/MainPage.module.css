@@ -48,11 +48,15 @@
   margin-top: 100px;
 }
 
-.backLink {
+.link {
   align-self: flex-start;
   margin-bottom: 20px;
-  color: blue;
+  color: #4b3621;
   text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+  color: #222;
 }
 
 /* InputForm用 */
@@ -132,6 +136,12 @@
   padding: 4px 8px;
   background-color: gainsboro;
   font-family: "Yu Mincho", "YuMincho", serif;
+}
+.historyLink:hover {
+  background-color: lightgray;
+  color: #333;
+  text-decoration: none;
+  outline: none; 
 }
 
 .historyContainer {
@@ -253,11 +263,13 @@
 .modeOptions {
   display: flex;
   gap: 20px;
+  accent-color: #4b3621; /* チェックボックスの色 */
 }
 
 .modeOptions div {
   display: flex;
   flex-direction: column;
+  
 }
 
 .modeOptions label {

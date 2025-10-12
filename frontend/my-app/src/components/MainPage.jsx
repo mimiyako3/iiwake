@@ -85,7 +85,7 @@ function MainPage() {
     <div className={styles.mainPageContainer}>
       <div className={styles.mainPageCenter}>
         <Link to="/history" className={styles.historyLink}>
-          履歴ページへ
+          履歴
         </Link>
         <h1>やんごとなき言い訳</h1>
 
@@ -114,6 +114,7 @@ function MainPage() {
             className={styles.icon}
           />
         </div>
+         <Link className={styles.link} to="/">はじめに戻る</Link>
       </div>
     </div>
   );
