@@ -48,13 +48,6 @@
   margin-top: 100px;
 }
 
-.backLink {
-  align-self: flex-start;
-  margin-bottom: 20px;
-  color: blue;
-  text-decoration: none;
-}
-
 /* InputForm用 */
 .formContainer {
   display: flex;
@@ -132,6 +125,10 @@
   padding: 4px 8px;
   background-color: gainsboro;
   font-family: "Yu Mincho", "YuMincho", serif;
+}
+
+.historyLink:hover {
+  color: gray;
 }
 
 .historyContainer {
