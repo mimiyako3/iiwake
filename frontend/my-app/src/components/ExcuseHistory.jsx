@@ -4,14 +4,13 @@ import React from "react";
 import styles from "../styles/MainPage.module.css";
 import { FiCopy, FiShare2 } from "react-icons/fi";
 
-
 // 💡 文字列であることを保証するユーティリティ関数
 const ensureString = (value) => {
-    if (!value) return '';
-    if (typeof value === 'object') {
-        return JSON.stringify(value); 
-    }
-    return value;
+  if (!value) return "";
+  if (typeof value === "object") {
+    return JSON.stringify(value);
+  }
+  return value;
 };
 
 function ExcuseHistory({ history }) {
@@ -38,8 +37,6 @@ function ExcuseHistory({ history }) {
       });
   };
 
-
-
   return (
     <div className={styles.historyContainer}>
       <h2>履歴</h2>
@@ -50,20 +47,22 @@ function ExcuseHistory({ history }) {
           const outputText = ensureString(item.output);
           const shouldShowCopyButton = outputText.length > 0;
 
-          const aiGender = item.mode === 'female' ? '女性' : '男性';
-          const aiIconPath = aiGender === '女性' ? '/女性.png' : '/男性.png';
-          const userGender = item.mode === 'female' ? '女性' : '男性'; 
-          const userIconPath = userGender === '女性' ? '/ユーザーアイコン(女).png' : '/ユーザーアイコン(男).png';
+          const aiGender = item.mode === "female" ? "女性" : "男性";
+          const aiIconPath = aiGender === "女性" ? "/女性.png" : "/男性.png";
+          const userGender = item.mode === "female" ? "女性" : "男性";
+          const userIconPath =
+            userGender === "女性"
+              ? "/ユーザーアイコン(女).png"
+              : "/ユーザーアイコン(男).png";
           console.log("AIの性別:", aiGender);
-          console.log("ユーザーの性別:", userGender); 
+          console.log("ユーザーの性別:", userGender);
 
           return (
             <li key={index} className={styles.historyItem}>
-              
               {/*ユーザー*/}
               <div className={styles.userSide}>
                 <div className={styles.userInput}>
-                 {ensureString(item.input)}
+                  {ensureString(item.input)}
                 </div>
                 <img
                   src={userIconPath}
@@ -74,35 +73,40 @@ function ExcuseHistory({ history }) {
 
               {/* AI */}
               <div className={styles.aiSide}>
-                <img src={aiIconPath} alt={`${aiGender}`} className={styles.icon} />
+                <img
+                  src={aiIconPath}
+                  alt={`${aiGender}`}
+                  className={styles.icon}
+                />
                 <div className={styles.message}>
-                  <div className={styles.elegantText}>{ensureString(item.output)} </div>
+                  <div className={styles.elegantText}>
+                    {ensureString(item.output)}{" "}
+                  </div>
 
-                   {shouldShowCopyButton && (
-                     <div className={styles.historyCopyButton}>
+                  {shouldShowCopyButton && (
+                    <div className={styles.historyCopyButton}>
                       <button
-                        onClick={() => handleCopy(item.output)} 
-                        className={styles.copyButton} 
+                        onClick={() => handleCopy(item.output)}
+                        className={styles.copyButton}
                         title="この雅文をコピー"
                       >
-                        <FiCopy size={18} /> 
+                        <FiCopy size={18} />
                       </button>
                     </div>
                   )}
 
                   {item.meaning && (
-                      <div className={styles.meaningText}>
-
-                          <strong>【意味】</strong>
-                          {ensureString(item.meaning)}
-                      </div>
+                    <div className={styles.meaningText}>
+                      <strong>【意味】</strong>
+                      {ensureString(item.meaning)}
+                    </div>
                   )}
                 </div>
               </div>
-              
+
               <hr className={styles.divider} />
             </li>
-          ); 
+          );
         })}
       </ul>
     </div>

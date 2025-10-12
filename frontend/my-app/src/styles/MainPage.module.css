@@ -225,6 +225,12 @@
   margin-top: 40px;
 }
 
+.historyPageContainer p {
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: bold; /* 太字 */
+  margin-top: 40px;
+}
+
 /* styles.module.css など */
 .excuseContainer {
   position: relative; /* 👈 ボタンをこの中で絶対位置指定できるように */
@@ -249,15 +255,15 @@
   color: #222;
 }
 .copyButton:active {
-  background-color: rgba(0, 0, 0, 0.15); 
-  color: #111;  
-  outline: none; 
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #111;
+  outline: none;
   border: none;
 }
-.historyCopyButton{
+.historyCopyButton {
   display: flex;
-  justify-content: flex-end; 
-  width: 100%; 
+  justify-content: flex-end;
+  width: 100%;
   margin-top: 8px; /* 本文との間に少し隙間を作る */
   padding-right: 4px; /* 吹き出しの端から少し離す調整 */
 }
@@ -295,7 +301,6 @@
 }
 
 .shareIcons {
-
   display: flex;
   justify-content: center;
   gap: 1.2em;
@@ -333,18 +338,37 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-
-.twitterButton { color: #1da1f2; }
-.lineButton { color: #06c755; }
-.mailButton { color: #dd4b39; }
-.discordButton { color: #5865f2; }
-.slackButton { color: #4a154b; }
-.copyButtonPopup { color: #444; }
-.closeButton { margin-top: 1rem; }
+.twitterButton {
+  color: #1da1f2;
+}
+.lineButton {
+  color: #06c755;
+}
+.mailButton {
+  color: #dd4b39;
+}
+.discordButton {
+  color: #5865f2;
+}
+.slackButton {
+  color: #4a154b;
+}
+.copyButtonPopup {
+  color: #444;
+}
+.closeButton {
+  margin-top: 1rem;
+}
 
 /* === AI（左寄せで横並び）=== */
 .aiSide {
@@ -437,14 +461,14 @@
 /* 共通ボタンスタイル */
 .copyButton,
 .shareButton {
-  background: none ;
+  background: none;
   border: none;
   color: #444;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
   position: static; /* ←絶対配置を無効化 */
 }
-.shareButton:focus{
+.shareButton:focus {
   outline: none;
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
@@ -454,6 +478,13 @@
 .shareButton:hover {
   color: #000;
   transform: scale(1.2);
+}
+.linkStart {
+  color: rgb(167, 167, 167);
+}
+
+.linkStart:hover {
+  color: rgb(66, 66, 66);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -608,8 +639,47 @@
     color: white;
   }
 
+  .message {
+    background-color: black;
+    padding: 12px 16px;
+    border-radius: 10px;
+    max-width: 70%;
+    line-height: 1.5;
+    text-align: left;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    font-weight: bold; /* 太字 */
+    position: relative;
+    padding-bottom: 30px;
+  }
+
+  /* .copyButton {
+    color: lightgray;
+  } */
   .copyButton {
     color: lightgray;
+    position: static;
+    bottom: unset;
+    right: unset;
+  }
+
+  .copyButton:hover {
+    color: white;
+  }
+  .copyButton:active {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    outline: none;
+    border: none;
+  }
+
+  .copyButton:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
+  }
+
+  .meaningText {
+    background-color: #555;
+    color: white;
   }
 }
-
