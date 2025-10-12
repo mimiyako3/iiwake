@@ -96,7 +96,11 @@ function MainPage() {
             alt="AIアイコン" className={styles.icon}
           />
           <div className={styles.excuseDisplayContainer}>
-            <ExcuseDisplay excuse={excuse} />
+            {isLoading ? (
+              <p className={styles.loadingMessage}>生成中...</p>
+            ) : (
+              <ExcuseDisplay excuse={excuse} />
+            )}
           </div>
         </div>
 
@@ -106,7 +110,7 @@ function MainPage() {
 
         <div className={styles.inputSection}>
           <div className={styles.inputFormContainer}>
-            <InputForm onSubmit={generateExcuse} />
+            <InputForm onSubmit={generateExcuse} isLoading={isLoading} />
           </div>
           <img
             src={mode.gender === "female" ? "/ユーザーアイコン(女).png" : "/ユーザーアイコン(男).png"}

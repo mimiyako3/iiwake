@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "../styles/MainPage.module.css";
 
-function InputForm({ onSubmit }) {
+function InputForm({ onSubmit , isLoading}) {
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
@@ -22,6 +22,7 @@ function InputForm({ onSubmit }) {
         value={input}
         onChange={handleInputChange}
         placeholder="今の状況を入力してください"
+        disabled={isLoading}
         onKeyDown={(e) => {
           if (e.key === "Enter" && !e.shiftKey) {
             // ShiftなしEnterで送信
@@ -30,7 +31,7 @@ function InputForm({ onSubmit }) {
           }
         }}
       />
-      <button type="submit" className={styles.submitButton}>
+      <button type="submit" className={styles.submitButton} disabled={isLoading}>
         生成
       </button>
     </form>
