@@ -24,19 +24,11 @@ function ExcuseHistory({ history }) {
   }
 
   return (
-    <div>
+    <div className={styles.historyContainer}>
       <h2>履歴</h2>
       <ul>
         {history.map((item, index) => {
           console.log("履歴アイテム:", item);
-      
-          // const currentGender = (
-          //   item.mode && 
-          //   typeof item.mode === 'object' && 
-          //   item.mode.gender
-          // )
-          //   ? item.mode // 存在すればその値を使用
-          //   : 'female';
 
           const aiGender = item.mode === 'female' ? '女性' : '男性';
           const aiIconPath = aiGender === '女性' ? '/女性.png' : '/男性.png';
