@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "../styles/MainPage.module.css";
-import { FiCopy } from "react-icons/fi";
+import { FiCopy, FiShare2 } from "react-icons/fi";
 
 // 💡 文字列であることを保証するユーティリティ関数
 const ensureString = (value) => {
@@ -14,20 +14,6 @@ const ensureString = (value) => {
 };
 
 function ExcuseHistory({ history }) {
-  const handleCopy = (text) => {
-    const s = ensureString(text);
-    if (!s) return;
-    navigator.clipboard
-      .writeText(s)
-      .then(() => {
-        alert("雅文（言い訳本文）をコピーしました！");
-      })
-      .catch((err) => {
-        console.error("コピーに失敗しました:", err);
-        alert("コピーに失敗しました。ブラウザの設定を確認してください。");
-      });
-  };
-
   // historyが空の場合はメッセージを表示
   if (!history || history.length === 0) {
     return (
@@ -38,6 +24,19 @@ function ExcuseHistory({ history }) {
     );
   }
 
+  // 💡 コピー処理をハンドルする関数をここに定義
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("雅文（言い訳本文）をコピーしました！");
+      })
+      .catch((err) => {
+        console.error("コピーに失敗しました:", err);
+        alert("コピーに失敗しました。ブラウザの設定を確認してください。");
+      });
+  };
+
   return (
     <div className={styles.historyContainer}>
       <h2>履歴</h2>
@@ -45,10 +44,8 @@ function ExcuseHistory({ history }) {
         {history.map((item, index) => {
           console.log("履歴アイテム:", item);
 
-          const elegant =
-            typeof item.output === "string"
-              ? item.output
-              : item.output?.elegantText ?? "";
+          const outputText = ensureString(item.output);
+          const shouldShowCopyButton = outputText.length > 0;
 
           const aiGender = item.mode === "female" ? "女性" : "男性";
           const aiIconPath = aiGender === "女性" ? "/女性.png" : "/男性.png";
@@ -82,23 +79,20 @@ function ExcuseHistory({ history }) {
                   className={styles.icon}
                 />
                 <div className={styles.message}>
-                  <div className={styles.elegantRow}>
-                    <p className={styles.elegantText}>
-                      {ensureString(elegant)}
-                    </p>
+                  <p className={styles.elegantText}>
+                    {ensureString(item.output)}{" "}
+                  </p>
 
-                    {elegant && (
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(elegant)}
-                        className={styles.copyButton}
-                        title="雅文のみをコピー"
-                        aria-label="雅文のみをコピー"
-                      >
-                        <FiCopy size={18} />
-                      </button>
-                    )}
-                  </div>
+                  {shouldShowCopyButton && (
+                    <button
+                      onClick={() => handleCopy(item.output)}
+                      className={styles.copyButton}
+                      title="この雅文をコピー"
+                    >
+                      <FiCopy size={18} />
+                    </button>
+                  )}
+
                   {item.meaning && (
                     <p className={styles.meaning}>
                       <br />
