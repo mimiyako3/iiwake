@@ -79,13 +79,14 @@ function MainPage() {
         <Link to="/history" className={styles.historyLink}>
           履歴
         </Link>
-        <h1>やんごとなき言い訳</h1>
+        <h1 className={styles.title}>やんごとなき言い訳</h1>
 
         {error && <p className={styles.errorMessage}>エラー: {error}</p>}
         <div className={styles.inputOutputContainer}>
           <img
             src={mode.gender === "female" ? "/女性.png" : "/男性.png"}
-            alt="AIアイコン" className={styles.icon}
+            alt="AIアイコン"
+            className={styles.icon}
           />
           <div className={styles.excuseDisplayContainer}>
             <ExcuseDisplay excuse={excuse} />
@@ -101,7 +102,11 @@ function MainPage() {
             <InputForm onSubmit={generateExcuse} />
           </div>
           <img
-            src={mode.gender === "female" ? "/ユーザーアイコン(女).png" : "/ユーザーアイコン(男).png"}
+            src={
+              mode.gender === "female"
+                ? "/ユーザーアイコン(女).png"
+                : "/ユーザーアイコン(男).png"
+            }
             alt="ユーザーアイコン"
             className={styles.icon}
           />
