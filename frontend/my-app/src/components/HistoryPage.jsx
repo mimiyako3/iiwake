@@ -18,7 +18,6 @@ function HistoryPage() {
   return (
     <div className={styles.historyPageContainer}>
       <h1>やんごとなき言い訳</h1>
-      <p>ここに履歴が表示されます。</p>
       <ExcuseHistory history={history} />
       <br />
       <Link to="/main" className={styles.historyLink}>
