@@ -254,6 +254,25 @@
 .copyButton:hover {
   color: #222;
 }
+.copyButton:active {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #111;
+  outline: none;
+  border: none;
+}
+.historyCopyButton {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 8px; /* 本文との間に少し隙間を作る */
+  padding-right: 4px; /* 吹き出しの端から少し離す調整 */
+}
+
+.copyButton:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
+}
 
 /* 共有ボタンについて */
 .overlay {
@@ -449,6 +468,11 @@
   transition: transform 0.2s ease, color 0.2s ease;
   position: static; /* ←絶対配置を無効化 */
 }
+.shareButton:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
+}
 
 .copyButton:hover,
 .shareButton:hover {
@@ -615,7 +639,47 @@
     color: white;
   }
 
+  .message {
+    background-color: black;
+    padding: 12px 16px;
+    border-radius: 10px;
+    max-width: 70%;
+    line-height: 1.5;
+    text-align: left;
+    font-family: "Yu Mincho", "YuMincho", serif;
+    font-weight: bold; /* 太字 */
+    position: relative;
+    padding-bottom: 30px;
+  }
+
+  /* .copyButton {
+    color: lightgray;
+  } */
   .copyButton {
     color: lightgray;
+    position: static;
+    bottom: unset;
+    right: unset;
+  }
+
+  .copyButton:hover {
+    color: white;
+  }
+  .copyButton:active {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    outline: none;
+    border: none;
+  }
+
+  .copyButton:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.05); /* 押した後も落ち着いた色を維持 */
+  }
+
+  .meaningText {
+    background-color: #555;
+    color: white;
   }
 }

@@ -79,27 +79,27 @@ function ExcuseHistory({ history }) {
                   className={styles.icon}
                 />
                 <div className={styles.message}>
-                  <p className={styles.elegantText}>
+                  <div className={styles.elegantText}>
                     {ensureString(item.output)}{" "}
-                  </p>
+                  </div>
 
                   {shouldShowCopyButton && (
-                    <button
-                      onClick={() => handleCopy(item.output)}
-                      className={styles.copyButton}
-                      title="この雅文をコピー"
-                    >
-                      <FiCopy size={18} />
-                    </button>
+                    <div className={styles.historyCopyButton}>
+                      <button
+                        onClick={() => handleCopy(item.output)}
+                        className={styles.copyButton}
+                        title="この雅文をコピー"
+                      >
+                        <FiCopy size={18} />
+                      </button>
+                    </div>
                   )}
 
                   {item.meaning && (
-                    <p className={styles.meaning}>
-                      <br />
+                    <div className={styles.meaningText}>
                       <strong>【意味】</strong>
-                      <br />
                       {ensureString(item.meaning)}
-                    </p>
+                    </div>
                   )}
                 </div>
               </div>
