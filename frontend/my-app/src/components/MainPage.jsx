@@ -64,9 +64,8 @@ function MainPage() {
             meaning: data.excuse.meaning,
             mode: mode.gender,
           };
-          console.log("新しい履歴アイテム:", newHistoryItem);
 
-          const newHistory = [newHistoryItem, ...history];
+          const newHistory = [newHistoryItem, ...safePrevHistory];
           // setHistory(newHistory);
           localStorage.setItem("excuseHistory", JSON.stringify(newHistory));
           return newHistory;
