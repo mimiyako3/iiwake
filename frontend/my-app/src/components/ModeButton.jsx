@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Mainpage.module.css';
+import styles from '../styles/MainPage.module.css';
 
 function ModeButton({ mode, setMode }) {
   const handleGenderChange = (e) => {
