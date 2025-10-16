@@ -6,7 +6,13 @@ const excuseRoutes = require('./routes/excuse');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+const allowedOrigin = 'https://yangotonakiyan-iyi.onrender.com';
+
+app.use(cors({
+    origin: allowedOrigin,
+    methods: ['GET', 'POST', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type'], 
+}));
 app.use(express.json());
 
 app.use('/api/excuse', excuseRoutes);
